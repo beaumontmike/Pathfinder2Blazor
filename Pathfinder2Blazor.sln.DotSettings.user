@@ -4,5 +4,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b82e158c_002D6fa1_002D42e3_002Da7c6_002D007865c05685/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Statistic_Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::396853D9-A6DB-4CB8-B7D5-7114D1AB02B2::net7.0::Pathfinder2.Domain.Tests.Tests.ArmorClass_Calculation&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::396853D9-A6DB-4CB8-B7D5-7114D1AB02B2::net7.0::Pathfinder2.Domain.Tests.Tests.CheckArmorClass&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

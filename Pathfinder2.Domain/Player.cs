@@ -10,13 +10,12 @@ public class Player
     public int Wisdom { get; set; }
     public int Charisma { get; set; }
 
-    public ArmorClass ArmorClass { get; set; }
+    public ArmorClass ArmorClass { get; set; } = new ();
     public Armor? EquippedArmor { get; set; }
 
     public Player()
     {
-        ArmorClass = new ArmorClass(this)
-             { Name = nameof(ArmorClass), Ability = Ability.Dexterity, Training = Training.Untrained };   
+        ArmorClass.Player = this;
     }
     
     public int GetAbilityScore(Ability Ability) => Ability switch

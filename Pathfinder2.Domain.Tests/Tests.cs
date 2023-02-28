@@ -10,10 +10,15 @@ public class Tests
     [InlineData(Ability.Wisdom, Training.Legendary, 1, 9, 4, 13)]
     [InlineData(Ability.Charisma, Training.Untrained, 5, 5, 5, 10)]
     [InlineData(Ability.Charisma, Training.Master, 7, 13, 5, 18)]
-    public void Statistic_Calculations(Ability Ability, Training Training, int Level, int Proficiency, int AbilityModifier, int Value)
+    public void Statistic_Calculations(Ability Ability, Training Training, int Level, int Proficiency,
+        int AbilityModifier, int Value)
     {
-        var player = new Player { Level = Level, Strength = 10, Dexterity = 12, Constitution = 14, Intelligence = 16, Wisdom = 18, Charisma = 20};
-        var sut = new Statistic(player) { Ability = Ability, Training = Training};
+        var player = new Player
+        {
+            Level = Level, Strength = 10, Dexterity = 12, Constitution = 14, Intelligence = 16, Wisdom = 18,
+            Charisma = 20
+        };
+        var sut = new Statistic { Player = player, Ability = Ability, Training = Training };
 
         Assert.Equal(Proficiency, sut.Proficiency);
         Assert.Equal(AbilityModifier, sut.AbilityModifier);
@@ -27,14 +32,26 @@ public class Tests
     [InlineData(Training.Trained, 10, 16, 3, 3, 28)]
     [InlineData(Training.Trained, 10, 18, 3, 3, 28)]
     [InlineData(Training.Trained, 10, 20, 3, 3, 28)]
-    public void ArmorClass_Calculation(Training training, int level, int dexterity, int armorBonus, int dexCap, int result)
+    public void ArmorClass_Calculation(Training training, int level, int dexterity, int armorBonus, int dexCap,
+        int result)
     {
-        var player = new Player { Level = level, Strength = 10, Dexterity = dexterity, Constitution = 14, Intelligence = 16, Wisdom = 18, Charisma = 20,
+        var player = new Player
+        {
+            Level = level, Strength = 10, Dexterity = dexterity, Constitution = 14, Intelligence = 16, Wisdom = 18,
+            Charisma = 20,
             EquippedArmor = new Armor() { ArmorBonus = armorBonus, DexCap = dexCap },
         };
 
         player.ArmorClass.Training = training;
-        
+
         Assert.Equal(result, player.ArmorClass.Value);
+    }
+
+
+    [Theory]
+    [ClassData(typeof(PlayerData))]
+    public void CheckArmorClass(Player Player, (int Str, int Dex, int Con, int Int, int Wis, int Cha) ExpectedModifers, (int Proficiency, int AbilityBonus, int Value) ArmorClass)
+    {
+        Assert.Equal(ArmorClass.Proficiency, Player.ArmorClass.Proficiency);
     }
 }

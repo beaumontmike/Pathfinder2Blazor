@@ -12,6 +12,8 @@ public class Player
 
     public ArmorClass ArmorClass { get; set; } = new ();
     public Armor? EquippedArmor { get; set; }
+    public Shield? EquippedShield { get; set; }
+    public bool EquippedShieldRaised { get; set; }
 
     public Player()
     {
@@ -28,4 +30,6 @@ public class Player
         Ability.Charisma => Charisma,
         _ => 0
     };
+    
+    public int GetAbilityModifier(Ability Ability) => (GetAbilityScore(Ability) - 10) / 2;
 }

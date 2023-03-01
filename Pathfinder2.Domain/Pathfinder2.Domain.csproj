@@ -7,9 +7,4 @@
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Statistics\Bonuses" />
-      <Folder Include="Statistics\Penalties" />
-    </ItemGroup>
-
 </Project>

@@ -1,6 +1,6 @@
 namespace Pathfinder2.Domain;
 
-public class ArmorClass : Statistic
+public class ArmorClass : Skill
 {
 
     public ArmorClass()
@@ -11,7 +11,8 @@ public class ArmorClass : Statistic
     protected override int? CalculateValue()
     {
         var cappedModifier = Math.Min(AbilityModifier, Player.EquippedArmor?.DexCap ?? 0);
-        return 10 + cappedModifier + (Player.EquippedArmor?.ArmorBonus ?? 0) + Proficiency +
+        var shieldValue = Player.EquippedShieldRaised ? Player.EquippedShield?.ArmorBonus ?? 0 : 0;
+        return 10 + cappedModifier + shieldValue + (Player.EquippedArmor?.ArmorBonus ?? 0) + Proficiency +
                GetNetBonuses();
     }
 }
